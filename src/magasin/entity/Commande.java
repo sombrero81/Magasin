@@ -6,6 +6,7 @@
 package magasin.entity;
 
 import java.io.Serializable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,9 @@ public class Commande implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @Embedded
+    private Adresse adresse;
     
     private String moyenPaiement;
     private String statut;
