@@ -6,11 +6,15 @@
 package magasin.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -32,8 +36,11 @@ public class Commande implements Serializable {
     private Integer prixTotal;
     private String modeLivraison;
     private Integer fraisdePort;
-    private String DateHeurecommande;
-    private String DateLivraison;
+    
+    @Temporal(TemporalType.DATE)
+    private Date DateHeurecommande;
+    @Temporal(TemporalType.DATE)
+    private Date DateLivraison;
 
     public Long getId() {
         return id;
