@@ -25,6 +25,16 @@ public class Categorie implements Serializable {
     
     private String nomCategorie;
 
+    public String getNomCategorie() {
+        return nomCategorie;
+    }
+
+    public void setNomCategorie(String nomCategorie) {
+        this.nomCategorie = nomCategorie;
+    }
+
+    
+    
     public Long getId() {
         return id;
     }

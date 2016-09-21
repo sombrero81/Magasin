@@ -10,6 +10,8 @@ import java.util.Date;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,6 +24,14 @@ import javax.persistence.TemporalType;
  */
 @Entity
 public class Commande implements Serializable {
+    
+    
+    public enum StatutCommande{
+        EN_COURS,
+        TERMINE,
+        PAYE,
+        LIVRE
+    }
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,15 +42,19 @@ public class Commande implements Serializable {
     private Adresse adresse;
     
     private String moyenPaiement;
-    private String statut;
+    
     private Integer prixTotal;
     private String modeLivraison;
     private Integer fraisdePort;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date DateHeurecommande;
     @Temporal(TemporalType.DATE)
     private Date DateLivraison;
+    
+    @Enumerated(EnumType.ORDINAL)
+    private StatutCommande statutcom;
+    
 
     public Long getId() {
         return id;

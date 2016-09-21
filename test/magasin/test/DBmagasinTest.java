@@ -5,7 +5,11 @@
  */
 package magasin.test;
 
+import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import magasin.entity.Categorie;
+import magasin.entity.Produit;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -17,8 +21,24 @@ public class DBmagasinTest {
     
     @Test
     public void test() {
+        EntityManager em =Persistence.createEntityManagerFactory("PU").createEntityManager();
         
-        Persistence.createEntityManagerFactory("PU");
+        //demarrer une transaction
+        em.getTransaction().begin();
+        //persister en bases des données
+        Categorie c1=new Categorie();
+        c1.setNomCategorie("Basket");
+        em.persist(c1);
+        
+        Categorie c2=new Categorie();
+        c2.setNomCategorie("lunettes de soleil");
+        em.persist(c2);
+        
+        Produit rayban=new Produit();
+        rayban.setCategorie(c2);
+        em.persist(rayban);
+        
+        em.getTransaction().commit();
     }
     
 }
