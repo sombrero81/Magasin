@@ -19,6 +19,21 @@ import static org.junit.Assert.*;
  */
 public class DBmagasinTest {
     
+    //@Test
+    public void testlisteprodcategorie(){
+        
+        EntityManager em =Persistence.createEntityManagerFactory("PU").createEntityManager();
+        
+        //52 est un type Long
+        Categorie cat = em.find(Categorie.class, 52L);
+        for (Produit p:cat.getProduits()){
+            
+            System.out.println(p);
+        }
+            
+    }
+    
+    
     @Test
     public void test() {
         EntityManager em =Persistence.createEntityManagerFactory("PU").createEntityManager();

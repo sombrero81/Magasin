@@ -5,11 +5,15 @@
  */
 package magasin.entity;
 
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,6 +28,15 @@ public class Categorie implements Serializable {
     private Long id;
     
     private String nomCategorie;
+    
+    //les relations to many
+    @OneToMany(mappedBy = "categorie")
+    private List<Produit> produits = new ArrayList<>();
+    
+    public List<Produit> getProduits(){
+        
+        return produits;
+    }
 
     public String getNomCategorie() {
         return nomCategorie;
